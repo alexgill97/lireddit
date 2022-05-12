@@ -53,7 +53,7 @@ let PostResolver = class PostResolver {
     }
     deletePost(id, { em }) {
         return __awaiter(this, void 0, void 0, function* () {
-            em.nativeDelete(Post_1.Post, { id });
+            yield em.nativeDelete(Post_1.Post, { id });
             return true;
         });
     }

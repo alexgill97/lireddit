@@ -7,7 +7,8 @@
     "watch": "tsc -w",
     "dev": "nodemon dist/index.js",
     "start": "node dist/index.js",
-    "start2": "ts-node src/index.ts"
+    "start2": "ts-node src/index.ts",
+    "create:migration": "mikro-orm migration:create"
   },
   "keywords": [],
   "author": "",
@@ -31,7 +32,8 @@
     "graphql": "^15.3.0",
     "pg": "^8.3.0",
     "reflect-metadata": "^0.1.13",
-    "type-graphql": "^1.0.0-rc.3"
+    "type-graphql": "^1.0.0-rc.3",
+    "argon2": "^0.26.2"
   },
   "mikro-orm": {
     "useTsNode": true,
