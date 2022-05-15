@@ -26,8 +26,16 @@ const main = async () => {
 
   app.use(
     session({
-      store: new RedisStore({ client: redisClient }),
-      secret: "keyboard cat",
+      name: "qid",
+      store: new RedisStore({ client: redisClient, disableTouch: true }),
+      cookie: {
+        maxAge: 1000 * 60 * 24 * 365 * 10,
+        httpOnly: true,
+        sameSite: "lax",
+        secure: __prod__, // cookie only works in https
+      },
+      saveUninitialized: false,
+      secret: "make_env_for_prod",
       resave: false,
     })
   );
@@ -37,7 +45,7 @@ const main = async () => {
       resolvers: [HelloResolver, PostResolver, UserResolver],
       validate: false,
     }),
-    context: () => ({ em: orm.em }),
+    context: ({ req, res }) => ({ em: orm.em, req, res }),
   });
 
   apolloServer.applyMiddleware({ app });
