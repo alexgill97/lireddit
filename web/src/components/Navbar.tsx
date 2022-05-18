@@ -11,14 +11,16 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
 
 	if (fetching) {
 	} else if (!data?.me) {
-		<>
-			<NextLink href='/login'>
-				<Link mr={2}>Login</Link>
-			</NextLink>
-			<NextLink href='/register'>
-				<Link>Register</Link>
-			</NextLink>
-		</>;
+		body = (
+			<>
+				<NextLink href='/login'>
+					<Link mr={2}>Login</Link>
+				</NextLink>
+				<NextLink href='/register'>
+					<Link>Register</Link>
+				</NextLink>
+			</>
+		);
 	} else {
 		body = (
 			<Flex>
